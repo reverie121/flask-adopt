@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Adopt A Pet - Pet List
+{% endblock title %}
+
+{% block content %}
+    {% for pet in pets %}
+        <div class="row align-items-center">
+            <div class="col-4"><img src="{{ pet.photo_url }}" class="img-fluid float-right"></div>
+            <div class="col-8">
+                <h2 class="h2"><a href="/{{ pet.id }}">{{ pet.name }}</a></h2>
+                <h5 class="h5">{{ pet.species }}</h5>
+                {% if pet.availability == t %}
+                    <h6 class="h6 text-success"><b>AVAILABLE</b></h6>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content %}
